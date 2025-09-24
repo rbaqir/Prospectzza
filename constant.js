@@ -1,0 +1,1 @@
+const MONGODB_URL = "mongodb+srv://MMBaqir:<db_password>@prospectzza.sdljwej.mongodb.net";
