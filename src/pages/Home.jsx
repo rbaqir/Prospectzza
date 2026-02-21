@@ -34,7 +34,13 @@ const TESTIMONIALS = [
     name: 'Sarah Aldridge', role: 'Growth Lead, Nexify',
   },
 ]
-const CLIENTS = ['B2B Brands', 'DTC Brands', 'UK Digital Marketing', 'Startup Canada', 'Tech Agencies', 'SaaS Companies']
+const CLIENTS = [
+  { name: 'DTC Brands', img: '/images/DTC-Brands.png' },
+  { name: 'Fiverr', img: '/images/Adobe-Express-file.png' },
+  { name: 'B2B Brands', img: '/images/B2B.png' },
+  { name: 'Startup Canada', img: '/images/Startup-Canada-1.png' },
+  { name: 'UK Digital Marketing', img: '/images/UK-Digital-Marketing.png' }
+]
 
 // Animation Variants
 const containerVariants = {
@@ -260,9 +266,14 @@ export default function Home() {
                 transition={{ delay: i * 0.05 }}
                 className="glass-card-static client-card"
                 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '0.875rem', color: 'var(--muted)', cursor: 'default' }}
-                whileHover={{ color: 'var(--text-main)', borderColor: 'var(--accent)' }}
               >
-                {c}
+                <img 
+                  src={c.img} 
+                  alt={c.name} 
+                  style={{ maxWidth: '100%', maxHeight: '40px', objectFit: 'contain' }} 
+                  onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }}
+                />
+                <span style={{ display: 'none' }}>{c.name}</span>
               </motion.div>
             ))}
           </div>
