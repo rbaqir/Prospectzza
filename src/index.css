@@ -257,6 +257,22 @@ body::before {
   margin-bottom: 4rem;
 }
 
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  justify-content: center;
+}
+
+.client-card {
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
 @media (max-width: 768px) {
   .md-hidden { display: none !important; }
   .md-block { display: block !important; }

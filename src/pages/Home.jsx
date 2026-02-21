@@ -250,7 +250,7 @@ export default function Home() {
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <p style={{ color: 'var(--muted)', fontFamily: 'var(--font-dm)', fontSize: '0.875rem', marginBottom: '0.5rem' }}>Trusted by leading companies and brands globally</p>
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}>
+          <div className="clients-grid">
             {CLIENTS.map((c, i) => (
               <motion.div
                 key={i}
@@ -258,8 +258,8 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="glass-card-static"
-                style={{ padding: '1rem 2.5rem', borderRadius: 9999, fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '0.875rem', color: 'var(--muted)', cursor: 'default', whiteSpace: 'nowrap' }}
+                className="glass-card-static client-card"
+                style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '0.875rem', color: 'var(--muted)', cursor: 'default' }}
                 whileHover={{ color: 'var(--text-main)', borderColor: 'var(--accent)' }}
               >
                 {c}
@@ -345,6 +345,16 @@ export default function Home() {
           .hero-grid > div > div[style*="display: flex; flex-wrap: wrap"] { justify-content: center; width: 100%; }
           .stats-flex { flex-wrap: wrap; justify-content: center; gap: 1.5rem !important; }
           .stats-flex > div[style*="width: 1"] { display: none; }
+        }
+        @media (max-width: 640px) {
+          .clients-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .clients-grid {
+            grid-template-columns: 1fr !important;
+          }
         }
       `}</style>
     </div>
