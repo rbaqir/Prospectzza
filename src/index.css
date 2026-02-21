@@ -43,6 +43,8 @@
 /* Lenis smooth scroll — do NOT use scroll-behavior: smooth here, Lenis handles it */
 html {
   overscroll-behavior: none;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* Lenis applies these classes to html when active */
@@ -65,6 +67,7 @@ body {
   font-family: var(--font-dm);
   overflow-x: hidden;
   min-height: 100vh;
+  max-width: 100vw;
 }
 
 /* ===== SCROLLBAR ===== */
@@ -247,9 +250,32 @@ body::before {
 }
 
 /* ===== RESPONSIVE ===== */
+.footer-main-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
 @media (max-width: 768px) {
   .md-hidden { display: none !important; }
   .md-block { display: block !important; }
+  
+  .footer-main-grid { 
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 2rem; 
+  }
+  .footer-main-grid > div {
+    margin-bottom: 3rem;
+  }
+  .footer-main-grid > div:nth-child(2) {
+    margin-bottom: 2rem; /* Brings Company Links & Contact Info close together */
+  }
+  .footer-main-grid > div:last-child {
+    margin-bottom: 0;
+  }
 }
 @media (min-width: 769px) {
   .mobile-only { display: none !important; }

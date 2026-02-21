@@ -48,30 +48,30 @@ export default function Contact() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                <div style={{ width: 56, height: 56, borderRadius: 12, background: 'var(--surface)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)' }}>
+                <div style={{ width: 56, height: 56, borderRadius: 12, background: 'var(--surface)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)', flexShrink: 0 }}>
                   <Mail size={24} />
                 </div>
-                <div>
+                <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ color: 'var(--muted)', fontSize: '0.875rem', fontFamily: 'var(--font-syne)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 6 }}>Email Us</div>
-                  <a href="mailto:support@prospectzza.com" style={{ color: 'var(--text-main)', fontSize: '1.125rem', fontFamily: 'var(--font-dm)', textDecoration: 'none', fontWeight: 500 }}>support@prospectzza.com</a>
+                  <a href="mailto:support@prospectzza.com" style={{ color: 'var(--text-main)', fontSize: 'clamp(0.9rem, 4vw, 1.125rem)', fontFamily: 'var(--font-dm)', textDecoration: 'none', fontWeight: 500, wordBreak: 'break-word' }}>support@prospectzza.com</a>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                <div style={{ width: 56, height: 56, borderRadius: 12, background: 'var(--surface)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)' }}>
+                <div style={{ width: 56, height: 56, borderRadius: 12, background: 'var(--surface)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)', flexShrink: 0 }}>
                   <Phone size={24} />
                 </div>
-                <div>
+                <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ color: 'var(--muted)', fontSize: '0.875rem', fontFamily: 'var(--font-syne)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 6 }}>Call Us</div>
-                  <a href="tel:+17375772132" style={{ color: 'var(--text-main)', fontSize: '1.125rem', fontFamily: 'var(--font-dm)', textDecoration: 'none', fontWeight: 500 }}>+1 (737) 577-2132</a>
+                  <a href="tel:+17375772132" style={{ color: 'var(--text-main)', fontSize: 'clamp(0.9rem, 4vw, 1.125rem)', fontFamily: 'var(--font-dm)', textDecoration: 'none', fontWeight: 500, wordBreak: 'break-word' }}>+1 (737) 577-2132</a>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                <div style={{ width: 56, height: 56, borderRadius: 12, background: 'var(--surface)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)' }}>
+                <div style={{ width: 56, height: 56, borderRadius: 12, background: 'var(--surface)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)', flexShrink: 0 }}>
                   <MapPin size={24} />
                 </div>
-                <div>
+                <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ color: 'var(--muted)', fontSize: '0.875rem', fontFamily: 'var(--font-syne)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 6 }}>Office Location</div>
-                  <div style={{ color: 'var(--text-main)', fontSize: '1.125rem', fontFamily: 'var(--font-dm)', fontWeight: 500 }}>5919 Trussville Crossings Pkwy, AL 35235</div>
+                  <div style={{ color: 'var(--text-main)', fontSize: 'clamp(0.9rem, 4vw, 1.125rem)', fontFamily: 'var(--font-dm)', fontWeight: 500, wordBreak: 'break-word' }}>5919 Trussville Crossings Pkwy, AL 35235</div>
                 </div>
               </div>
             </div>

@@ -16,7 +16,7 @@ export default function Footer() {
     <footer style={{ borderTop: '1px solid var(--border)', background: 'var(--surface)', position: 'relative', zIndex: 1 }}>
       <div className="container" style={{ padding: '5rem 1.5rem 2rem' }}>
         {/* Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '3rem', marginBottom: '4rem' }}>
+        <div className="footer-main-grid">
           {/* Brand */}
           <div style={{ gridColumn: 'span 2' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1.25rem' }}>
@@ -89,15 +89,16 @@ export default function Footer() {
             </div>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 16 }}>
               <li style={{ color: 'var(--muted)', fontFamily: 'var(--font-dm)', fontSize: '0.875rem', display: 'flex', gap: 10 }}>
-                <span style={{ color: 'var(--accent)' }}>📍</span>
-                5919 Trussville Crossings Pkwy, AL
+                <span style={{ color: 'var(--accent)', flexShrink: 0 }}>📍</span>
+                <span style={{ wordBreak: 'break-word', flex: 1, minWidth: 0 }}>5919 Trussville Crossings Pkwy, AL</span>
               </li>
               <li>
                 <a href="mailto:support@prospectzza.com" style={{ color: 'var(--muted)', fontFamily: 'var(--font-dm)', fontSize: '0.875rem', textDecoration: 'none', display: 'flex', gap: 10, transition: 'color 0.2s' }}
                   onMouseEnter={e => e.target.style.color = 'var(--accent)'}
                   onMouseLeave={e => e.target.style.color = 'var(--muted)'}
                 >
-                  <span style={{ color: 'var(--accent)' }}>📧</span>support@prospectzza.com
+                  <span style={{ color: 'var(--accent)', flexShrink: 0 }}>📧</span>
+                  <span style={{ wordBreak: 'break-all', flex: 1, minWidth: 0 }}>support@prospectzza.com</span>
                 </a>
               </li>
               <li>
@@ -105,7 +106,8 @@ export default function Footer() {
                   onMouseEnter={e => e.target.style.color = 'var(--accent)'}
                   onMouseLeave={e => e.target.style.color = 'var(--muted)'}
                 >
-                  <span style={{ color: 'var(--accent)' }}>📞</span>+1 (737) 577-2132
+                  <span style={{ color: 'var(--accent)', flexShrink: 0 }}>📞</span>
+                  <span style={{ wordBreak: 'break-word', flex: 1, minWidth: 0 }}>+1 (737) 577-2132</span>
                 </a>
               </li>
             </ul>
@@ -118,7 +120,7 @@ export default function Footer() {
             <div style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, color: 'var(--text-main)', fontSize: '1rem', marginBottom: 4 }}>Subscribe to our Newsletter</div>
             <div style={{ color: 'var(--muted)', fontFamily: 'var(--font-dm)', fontSize: '0.875rem' }}>Get the latest news and special offers</div>
           </div>
-          <div style={{ display: 'flex', gap: 12 }}>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', width: '100%' }}>
             <input
               type="email"
               placeholder="your@email.com"
@@ -126,12 +128,12 @@ export default function Footer() {
                 background: 'var(--primary)', border: '1px solid var(--border)',
                 borderRadius: 8, padding: '0.75rem 1.25rem',
                 color: 'var(--text-main)', fontFamily: 'var(--font-dm)', fontSize: '0.875rem',
-                outline: 'none', width: 260, transition: 'border-color 0.2s',
+                outline: 'none', flex: '1 1 200px', transition: 'border-color 0.2s', width: '100%'
               }}
               onFocus={e => e.target.style.borderColor = 'var(--accent)'}
               onBlur={e => e.target.style.borderColor = 'var(--border)'}
             />
-            <button className="btn-primary" style={{ padding: '0.75rem 1.5rem', borderRadius: 8, fontSize: '0.875rem' }}>
+            <button className="btn-primary" style={{ padding: '0.75rem 1.5rem', borderRadius: 8, fontSize: '0.875rem', flex: '1 1 auto', whiteSpace: 'nowrap' }}>
               Subscribe
             </button>
           </div>
