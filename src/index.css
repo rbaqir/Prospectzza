@@ -1,0 +1,256 @@
+/* ===== DESIGN TOKENS ===== */
+:root, [data-theme="dark"] {
+  --primary: #090909;
+  --surface: #121212;
+  --card: #18181B;
+  --border: #27272A;
+  --text-main: #FFFFFF;
+  --muted: #A1A1AA;
+  --accent: #00B248;
+  --accent2: #008F38;
+  --light: #F4F4F5;
+  --btn-text: #000000;
+  --nav-bg: rgba(24, 24, 27, 1);
+  --nav-bg-scrolled: rgba(24, 24, 27, 0.85);
+  --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.2);
+  --shadow-md: 0 10px 30px -10px rgba(0,0,0,0.5);
+  --grid-line: rgba(255,255,255,0.03);
+  --font-syne: 'Manrope', sans-serif;
+  --font-dm: 'Inter', sans-serif;
+}
+
+[data-theme="light"] {
+  --primary: #FAFAFA;
+  --surface: #FFFFFF;
+  --card: #F9FAFB;
+  --border: #E5E7EB;
+  --text-main: #111827;
+  --muted: #6B7280;
+  --accent: #00B248;
+  --accent2: #008F38;
+  --light: #E8E8F0;
+  --btn-text: #FFFFFF;
+  --nav-bg: rgba(255, 255, 255, 1);
+  --nav-bg-scrolled: rgba(255, 255, 255, 0.85);
+  --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
+  --shadow-md: 0 10px 30px -10px rgba(0,0,0,0.1);
+  --grid-line: rgba(0,0,0,0.03);
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Lenis smooth scroll — do NOT use scroll-behavior: smooth here, Lenis handles it */
+html {
+  overscroll-behavior: none;
+}
+
+/* Lenis applies these classes to html when active */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: var(--primary);
+  color: var(--text-main);
+  font-family: var(--font-dm);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--primary); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* ===== NOISE OVERLAY ===== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ===== CANVAS ===== */
+#bg-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* ===== LAYOUT ===== */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+.section { position: relative; z-index: 1; }
+
+/* ===== TYPOGRAPHY ===== */
+.font-syne { font-family: var(--font-syne); }
+.font-dm { font-family: var(--font-dm); }
+
+/* ===== TEXT ACCENTS ===== */
+.grad {
+  color: var(--accent);
+  font-weight: 800;
+}
+.grad2 {
+  color: var(--muted);
+}
+
+/* ===== GLASS CARD & PANELS ===== */
+/* Replacing glass card with a flat dark panel */
+.glass-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.glass-card:hover {
+  border-color: var(--muted);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.glass-card-static {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+/* ===== BUTTONS ===== */
+/* Flat vibrant green button */
+.btn-primary {
+  background: var(--accent);
+  color: var(--btn-text);
+  font-weight: 700;
+  font-family: var(--font-dm);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+.btn-primary:hover {
+  background: #00D154;
+  transform: translateY(-1px);
+}
+
+/* Outline button */
+.btn-outline {
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  background: transparent;
+  font-family: var(--font-dm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+.btn-outline:hover {
+  background: var(--surface);
+  border-color: var(--muted);
+}
+
+/* ===== NAV INDICATOR ===== */
+.nav-indicator {
+  position: absolute;
+  bottom: -4px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 9999px;
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+.float-dot { animation: float 4s ease-in-out infinite; }
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ticker-inner { animation: ticker 30s linear infinite; white-space: nowrap; }
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes spin-reverse { to { transform: rotate(-360deg); } }
+.spin-slow { animation: spin-slow 20s linear infinite; }
+.spin-reverse { animation: spin-reverse 12s linear infinite; }
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+
+/* ===== REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ===== GRID LINES ===== */
+.grid-lines {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ===== COUNTER ===== */
+.counter { font-variant-numeric: tabular-nums; }
+
+/* ===== MOBILE MENU ===== */
+#mobile-menu {
+  display: none;
+  flex-direction: column;
+}
+#mobile-menu.open { display: flex; }
+
+/* ===== PRICING TOGGLE ===== */
+.plan-price-monthly { display: inline; }
+.plan-price-yearly { display: none; }
+.yearly-mode .plan-price-monthly { display: none; }
+.yearly-mode .plan-price-yearly { display: inline; }
+
+/* ===== PAGE TRANSITION ===== */
+.page-wrapper {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .md-hidden { display: none !important; }
+  .md-block { display: block !important; }
+}
+@media (min-width: 769px) {
+  .mobile-only { display: none !important; }
+}
