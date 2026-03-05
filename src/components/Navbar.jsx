@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Menu, X, Sun, Moon } from 'lucide-react'
+import logo from '../assets/Logo.svg'
+import nameLogo from '../assets/Name.svg'
 
 const NAV_LINKS = [
   { label: 'Home', path: '/' },
@@ -17,7 +19,7 @@ export default function Navbar() {
   const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  
+
   // Determine initial theme setup safely
   const [theme, setTheme] = useState(() => {
     if (typeof document !== 'undefined') {
@@ -73,28 +75,27 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+      className="container"
       style={{
         position: 'absolute',
         top: 24,
         left: 0,
         right: 0,
         zIndex: 50,
-        display: 'flex',
-        justifyContent: 'center',
-        padding: '0 1.5rem',
         pointerEvents: 'none',
       }}
     >
-      <div style={{ display: 'flex', gap: '0.75rem', width: '100%', maxWidth: 1000, position: 'relative' }}>
-        
+      <div style={{ display: 'flex', gap: '0.75rem', width: '100%', position: 'relative' }}>
+
         {/* Left Nav Capsule */}
         <nav
+          className="desktop-nav-capsule"
           style={{
             ...baseCapsuleStyle,
             padding: '0.5rem 0.5rem 0.5rem 1.25rem',
             display: 'flex',
             alignItems: 'center',
-            gap: '2rem',
+            gap: '1rem',
             flexGrow: 1,
             justifyContent: 'space-between'
           }}
@@ -102,15 +103,15 @@ export default function Navbar() {
           {/* Logo */}
           <button
             onClick={() => handleNav('/')}
-            style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0 }}
+            style={{ display: 'flex', alignItems: 'center', gap: '0px', background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0 }}
           >
-            <div style={{ width: 32, height: 32, borderRadius: 8, background: 'var(--accent)', color: '#000', fontSize: 11, fontWeight: 900, fontFamily: 'var(--font-syne)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>PZ</div>
-            <span style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: '1.25rem', color: 'var(--text-main)', letterSpacing: '-0.02em' }}>Prospectzza</span>
+            <img src={logo} alt="Prospectzza Logo" style={{ width: 36, height: 36, borderRadius: 8, objectFit: 'cover' }} />
+            <img src={nameLogo} alt="Prospectzza" style={{ height: '3.0rem', objectFit: 'contain', transform: 'translateY(1.5px)', marginLeft: '-12px' }} />
           </button>
 
           {/* Desktop Nav */}
           <div
-            style={{ display: 'flex', alignItems: 'center', gap: 4, position: 'relative', flexGrow: 1, justifyContent: 'flex-end' }}
+            style={{ display: 'flex', alignItems: 'center', gap: 3, position: 'relative', flexGrow: 1, justifyContent: 'flex-end' }}
             className="md-hidden-mobile"
           >
             {NAV_LINKS.map(link => {
@@ -156,14 +157,14 @@ export default function Navbar() {
               )
             })}
           </div>
-          
+
           {/* Mobile flex spacer to push logo left when links are hidden */}
           <div className="mobile-only" style={{ flexGrow: 1 }} />
         </nav>
 
         {/* Right CTA Desktop Capsule */}
-        <div 
-          style={{ ...baseCapsuleStyle, padding: '0.5rem', display: 'flex', alignItems: 'center', gap: '1rem', flexShrink: 0 }} 
+        <div
+          style={{ ...baseCapsuleStyle, padding: '0.5rem', display: 'flex', alignItems: 'center', gap: '1rem', flexShrink: 0 }}
           className="md-block"
         >
           {/* Theme Toggle */}
@@ -194,34 +195,44 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Right Mobile Capsule (Theme + Hamburger) */}
-        <div 
-          style={{ ...baseCapsuleStyle, padding: '0.5rem', display: 'none', alignItems: 'center', gap: '0.25rem', flexShrink: 0 }} 
-          className="mobile-only mobile-flex"
+        {/* Mobile View: Single Unified Capsule */}
+        <div
+          className="mobile-flex"
+          style={{
+            ...baseCapsuleStyle,
+            padding: '0.5rem 0.5rem 0.5rem 1rem',
+            display: 'none', // hidden on desktop
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            width: '100%',
+          }}
         >
-          {/* Theme Toggle */}
+          {/* Logo */}
           <button
-            onClick={toggleTheme}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-main)', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: '50%', transition: 'background 0.2s' }}
-            onMouseEnter={e => e.currentTarget.style.background = 'var(--surface)'}
-            onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
-            aria-label="Toggle theme"
+            onClick={() => handleNav('/')}
+            style={{ display: 'flex', alignItems: 'center', gap: '0px', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
           >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            <img src={logo} alt="Prospectzza Logo" style={{ width: 32, height: 32, borderRadius: 8, objectFit: 'cover' }} />
+            <img src={nameLogo} alt="Prospectzza" style={{ height: '2.6rem', objectFit: 'contain', transform: 'translateY(1px)', marginLeft: '-8px' }} />
           </button>
-          
-          {/* Mobile Hamburger */}
-          <button
-            onClick={() => setMobileOpen(o => !o)}
-            style={{
-              background: 'none', border: 'none', cursor: 'pointer',
-              color: 'var(--text-main)', padding: '0.5rem',
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+
+          {/* Controls */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+            <button
+              onClick={toggleTheme}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-main)', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: '50%', transition: 'background 0.2s' }}
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+            <button
+              onClick={() => setMobileOpen(o => !o)}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-main)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.5rem' }}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu Dropdown */}
@@ -276,16 +287,19 @@ export default function Navbar() {
       </div>
 
       <style>{`
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
           .md-hidden-mobile { display: none !important; }
           .md-block { display: none !important; }
           .mobile-only { display: block !important; }
           .mobile-flex { display: flex !important; }
+          /* Hide the desktop left capsule completely on mobile to use the single mobile capsule */
+          nav.desktop-nav-capsule { display: none !important; }
         }
-        @media (min-width: 901px) {
+        @media (min-width: 1025px) {
           .mobile-only { display: none !important; }
           .md-hidden-mobile { display: flex !important; }
           .md-block { display: flex !important; }
+          .mobile-flex { display: none !important; }
         }
       `}</style>
     </motion.div>

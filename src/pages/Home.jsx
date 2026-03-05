@@ -71,7 +71,7 @@ export default function Home() {
               initial="hidden" animate="visible" variants={containerVariants}
             >
               {/* Badge */}
-              <motion.div variants={itemVariants} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--card)', border: '1px solid var(--border)', borderRadius: 9999, padding: '0.5rem 1rem', marginBottom: '2rem', fontSize: '0.75rem', fontFamily: 'var(--font-dm)', color: 'var(--muted)' }}>
+              <motion.div variants={itemVariants} className="hero-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--card)', border: '1px solid var(--border)', borderRadius: 9999, padding: '0.5rem 1rem', marginBottom: '2rem', fontSize: '0.75rem', fontFamily: 'var(--font-dm)', color: 'var(--muted)' }}>
                 <span className="pulse-dot" style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--accent)', display: 'inline-block' }} />
                 500+ Verified Clients Worldwide
               </motion.div>
@@ -123,7 +123,7 @@ export default function Home() {
                 </div>
 
                 {/* Floating elements */}
-                 <motion.div
+                <motion.div
                   animate={{ y: [0, -15, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                   style={{ position: 'absolute', top: 20, right: 0, padding: '1rem', background: 'var(--card)', border: '1px solid var(--border)', borderRadius: 12, display: 'flex', alignItems: 'center', gap: 12, boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}
@@ -135,7 +135,7 @@ export default function Home() {
                   </div>
                 </motion.div>
 
-                 <motion.div
+                <motion.div
                   animate={{ y: [0, 15, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
                   style={{ position: 'absolute', bottom: 40, left: -20, padding: '1rem', background: 'var(--card)', border: '1px solid var(--border)', borderRadius: 12, display: 'flex', alignItems: 'center', gap: 12, boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}
@@ -267,10 +267,10 @@ export default function Home() {
                 className="glass-card-static client-card"
                 style={{ fontFamily: 'var(--font-syne)', fontWeight: 700, fontSize: '0.875rem', color: 'var(--muted)', cursor: 'default' }}
               >
-                <img 
-                  src={c.img} 
-                  alt={c.name} 
-                  style={{ maxWidth: '100%', maxHeight: '40px', objectFit: 'contain' }} 
+                <img
+                  src={c.img}
+                  alt={c.name}
+                  style={{ maxWidth: '100%', maxHeight: '40px', objectFit: 'contain' }}
                   onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }}
                 />
                 <span style={{ display: 'none' }}>{c.name}</span>

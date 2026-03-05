@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { Facebook, Twitter, Linkedin, Activity } from 'lucide-react'
+import logo2 from '../assets/Logo-2.svg'
 
 const NAV_LINKS = [
   { label: 'Home', path: '/' },
@@ -18,15 +19,14 @@ export default function Footer() {
         {/* Grid */}
         <div className="footer-main-grid">
           {/* Brand */}
-          <div style={{ gridColumn: 'span 2' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1.25rem' }}>
-              <div style={{ width: 36, height: 36, borderRadius: 8, background: 'var(--accent)', color: '#000', fontSize: 13, fontWeight: 900, fontFamily: 'var(--font-syne)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>PZ</div>
-              <span style={{ fontFamily: 'var(--font-syne)', fontWeight: 800, fontSize: '1.25rem', color: 'var(--text-main)' }}>Prospectzza</span>
+          <div className="footer-brand">
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1.25rem' }}>
+              <img src={logo2} alt="Prospectzza Brand Logo" style={{ height: '9.5rem', objectFit: 'contain' }} />
             </div>
             <p style={{ color: 'var(--muted)', fontFamily: 'var(--font-dm)', fontSize: '0.875rem', lineHeight: 1.7, maxWidth: 300, marginBottom: '2rem' }}>
               Prospectzza is your reliable partner for premium B2B lead generation, ensuring a steady, high-converting sales pipeline.
             </p>
-            <div style={{ display: 'flex', gap: 12 }}>
+            <div className="footer-social-flex" style={{ display: 'flex', gap: 12 }}>
               {[
                 { icon: <Facebook size={18} />, href: '#' },
                 { icon: <Twitter size={18} />, href: '#' },
@@ -40,14 +40,15 @@ export default function Footer() {
                     width: 40, height: 40, borderRadius: 10,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     color: 'var(--text-main)', textDecoration: 'none',
-                    transition: 'all 0.2s', background: 'var(--card)'
+                    transition: 'all 0.2s', background: 'var(--card-hover)',
+                    border: '1px solid var(--border)'
                   }}
                   onMouseEnter={e => {
                     e.currentTarget.style.background = 'var(--text-main)'
                     e.currentTarget.style.color = 'var(--primary)'
                   }}
                   onMouseLeave={e => {
-                    e.currentTarget.style.background = 'var(--card)'
+                    e.currentTarget.style.background = 'var(--card-hover)'
                     e.currentTarget.style.color = 'var(--text-main)'
                   }}
                 >

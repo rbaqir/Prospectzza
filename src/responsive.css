@@ -1,0 +1,124 @@
+/* ===== CLEAN RESPONSIVE FIXES ===== */
+
+/* 1. Prevent Horizontal Scroll Issues entirely */
+html,
+body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+}
+
+#root {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
+/* 2. Fluid Typography & Spacing adjustment for small screens */
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 95%;
+  }
+
+  .container {
+    padding: 0 2rem;
+  }
+
+  .hero-badge {
+    display: flex !important;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 90%;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  /* Make sure flex rows that clearly need wrapping on mobile do so */
+  .stats-flex {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem !important;
+  }
+
+  .stats-flex>div[style*="width: 1"] {
+    display: none !important;
+  }
+
+  .footer-brand {
+    grid-column: span 1 !important;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-brand>div:first-child {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .footer-brand p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-social-flex {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+.footer-brand {
+  grid-column: span 2;
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 85%;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* 3. Global Resets for Responsive Stability */
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Restore any beautiful glass card paddings instead of brutally truncating them */
+@media screen and (max-width: 768px) {
+
+  .glass-card,
+  .glass-card-static {
+    padding: 1.5rem !important;
+  }
+
+  /* Ensure all sections have a balanced minimum spacing on mobile instead of huge gaps */
+  section {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+
+  section[style*="minHeight: 100vh"],
+  section[style*="min-height: 100vh"] {
+    min-height: calc(100vh - 8rem) !important;
+    padding-top: 6rem !important;
+  }
+}
+
+/* 4. Ticker Animation Fix (Prevent weird stretching) */
+.ticker-inner {
+  will-change: transform;
+}
